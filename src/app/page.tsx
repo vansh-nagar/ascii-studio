@@ -4,7 +4,7 @@ import React from "react";
 const Page = () => {
   return (
     <div>
-      <div className="mt-28">
+      <div className="mt-[98px]">
         <AsciiAnimationsGrid />
       </div>
     </div>

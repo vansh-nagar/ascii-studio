@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "asciistudio",
+  "homepage": "https://asciistudio.space",
+  "items": [
+    {
+      "name": "red-fire",
+      "type": "registry:block",
+      "title": "Red Fire",
+      "description": "ASCII flame animation in a red terminal style.",
+      "files": [
+        {
+          "path": "src/components/ascii/red-fire.tsx",
+          "type": "registry:component",
+          "target": "components/ascii/red-fire.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cd",
+      "type": "registry:block",
+      "title": "CD Animation",
+      "description": "ASCII animation of a CD spinning.",
+      "files": [
+        {
+          "path": "src/components/ascii/cd.tsx",
+          "type": "registry:component",
+          "target": "components/ascii/cd.tsx"
+        }
+      ]
+    }
+  ]
+}

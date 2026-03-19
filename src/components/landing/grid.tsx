@@ -1,7 +1,7 @@
 "use client";
 
 import Cd from "../ascii/cd";
-import RedFire from "../ascii/red fire";
+import RedFire from "../ascii/red-fire";
 import CopyDropdown from "./copy-drop-down";
 
 const asciiAnimations = [
@@ -21,19 +21,17 @@ const asciiAnimations = [
 
 const AsciiAnimationsGrid = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-w-[70vw] mx-auto">
       {asciiAnimations.map((item, index) => (
         <div
           key={index}
-          className="relative  border border-dashed aspect-square flex items-center justify-center overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="relative  border border-dashed rounded-3xl aspect-square flex items-center justify-center overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           <div className="z-30">{item.component}</div>
 
-          <div className="leading-1 absolute left-1.5 bottom-1.5">
-            <p className="text-xs">{item.name}</p>
-            <p className="text-[8px] text-muted-foreground">
-              {item.description}
-            </p>
+          <div className="leading-1 absolute left-4 bottom-4">
+            <p className="text-sm">{item.name}</p>
+            <p className="text-xs text-muted-foreground">{item.description}</p>
           </div>
 
           <div className=" absolute top-2 right-2">

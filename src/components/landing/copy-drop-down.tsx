@@ -12,7 +12,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 
-const BASE_URL = "https://www.pixel-perfect.space/r";
+const BASE_URL = "https://asciistudio.space/r";
 
 type PackageManager = {
   name: string;
@@ -62,17 +62,14 @@ export default function CopyDropdown({
       <DropdownMenuTrigger asChild>
         <Button
           variant={"outline"}
-          size={"sm"}
-          className={`text-xs cursor-pointer z-30 relative border border-dashed right-1 top-1 rounded-none ${className}`}
+          className={`text-xs cursor-pointer z-30 relative border border-dashed right-0.5 top-0.5 rounded-xl ${className}`}
         >
           <Copy className="size-3" /> Copy
-          <span className="absolute -right-px -top-px z-30 block size-2 border-b border-l border-dashed"></span>
-          <span className="absolute -bottom-px -left-[0.5px] z-30 border-t border-r block size-2 border-dashed"></span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-72 rounded-none border-dashed"
+        className="w-72 rounded-md border-dashed"
       >
         <DropdownMenuLabel className="text-xs text-muted-foreground">
           Copy install command
