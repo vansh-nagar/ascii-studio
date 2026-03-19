@@ -100,7 +100,7 @@ const APPEARANCE = {
   backgroundColor: "#000000",
   borderRadius: 8,
   fontFamily:
-    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+    'JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   fontSize: 6,
   fontWeight: "normal",
   fontStyle: "normal",
@@ -243,7 +243,7 @@ export default function Cd() {
                   : ""
           }
           style={{
-            fontFamily: "inherit",
+            fontFamily: APPEARANCE.fontFamily,
             fontSize: `${APPEARANCE.fontSize}px`,
             lineHeight: APPEARANCE.lineHeight,
             margin: 0,
