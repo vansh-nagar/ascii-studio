@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/landing/navbar";
 import { SearchProvider } from "@/components/landing/search-context";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -36,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" suppressHydrationWarning className="h-full antialiased">
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link
@@ -45,10 +46,17 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <SearchProvider>
-          <Navbar />
-          {children}
-        </SearchProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SearchProvider>
+            <Navbar />
+            {children}
+          </SearchProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

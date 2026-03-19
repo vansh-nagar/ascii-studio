@@ -34,7 +34,7 @@ const AsciiAnimationsGrid = () => {
   });
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-w-[70vw] mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2  gap-2  w-[95vw] sm:w-[70vw] mx-auto">
       {filteredAnimations.map((item, index) => (
         <div
           key={index}
