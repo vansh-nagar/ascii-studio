@@ -52,7 +52,7 @@ export default function Navbar() {
             />
           </ButtonGroup>
           {/* <ThemeToggle customClass={buttonStyles} /> */}
-          <Button variant="outline">
+          <Button variant="outline" className="text-xs">
             <Github className="w-6 h-6 " />
             Star on GitHub
           </Button>
