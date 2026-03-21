@@ -1,28 +1,45 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Github, Search, Twitter } from "lucide-react";
+import { Github } from "lucide-react";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { ButtonGroup } from "../ui/button-group";
-import { useSearch } from "./search-context";
 import { StarsCount } from "./stars-count";
 import { ModeToggle } from "./theme-toggle";
 
-const navLinks = [
-  { name: "Products", href: "#" },
-  { name: "Playground", href: "#" },
-  { name: "Studio", href: "/studio" },
-  { name: "About me", href: "#" },
-];
-
 export default function Navbar() {
-  const { query, setQuery } = useSearch();
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    let previousScrollPos = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      
+      // Show if scrolling up or at the very top
+      if (currentScrollPos < 50) {
+        setVisible(true);
+      } else if (previousScrollPos < currentScrollPos) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      
+      previousScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-6 left-1/2 -translate-x-1/2 w-[95vw] sm:w-[70vw] z-50 rounded-3xl  bg-background/40 backdrop-blur-lg border ">
-      <div className="container flex justify-between w-full items-center px-4 py-3">
+    <header
+      className={`fixed top-6 flex justify-between gap-2 px-4 py-3 left-1/2 -translate-x-1/2 w-[95vw] sm:w-[70vw] z-50 rounded-3xl bg-background/40 backdrop-blur-lg border transition-all duration-300 ease-in-out ${
+        visible ? "translate-y-0 opacity-100" : "-translate-y-32 opacity-0"
+      }`}
+    >
         {/* Logo left */}
         <div className="flex items-center gap-2">
           <Link
@@ -42,22 +59,11 @@ export default function Navbar() {
 
         {/* Social buttons right */}
         <nav className="flex items-center gap-2 justify-end">
-          {/* <ButtonGroup>
-            <Button variant="outline">
-              <Search />
-            </Button>
-            <Input
-              placeholder="Search component..."
-              className="w-40"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </ButtonGroup> */}
           <Link
             target="_blank"
             href={"https://github.com/vansh-nagar/ASCII-Studio"}
           >
-            <Button variant="outline" className="text-xs border-red-500">
+            <Button variant="outline" className="text-xs border-red-500 dark:border-red-500">
               <Github className="w-6 h-6 " /> <StarsCount />
               /500{" "}
             </Button>
@@ -69,12 +75,11 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 width="24"
                 height="24"
-                color="currentColor"
-                fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                fill="none"
               >
                 <path d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516" />
               </svg>
@@ -82,7 +87,6 @@ export default function Navbar() {
           </Link>
           <ModeToggle />
         </nav>
-      </div>
     </header>
   );
 }
