@@ -2,11 +2,27 @@
 
 import Cd from "../ascii/cd";
 import Pitstop from "../ascii/pitstop";
+import RainbowFire from "../ascii/rainbow-fire";
 import RedFire from "../ascii/red-fire";
+import Star from "../ascii/star";
 import CopyDropdown from "./copy-drop-down";
 import { useSearch } from "./search-context";
 
 const asciiAnimations = [
+  {
+    name: "Star",
+    description: "ASCII animation of a star.",
+    component: <Star />,
+    registryName: "star-animation",
+    landscape: false,
+  },
+  {
+    name: "Rainbow Fire",
+    description: "ASCII rainbow fire animation.",
+    component: <RainbowFire />,
+    registryName: "rainbow-fire",
+    landscape: false,
+  },
   {
     name: "Red Fire",
     description: "ASCII flame animation in a red terminal style.",
@@ -14,7 +30,6 @@ const asciiAnimations = [
     registryName: "red-fire",
     landscape: true,
   },
-
   {
     name: "Red Fire",
     description: "ASCII flame animation in a red terminal style.",

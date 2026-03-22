@@ -17,6 +17,32 @@
       ]
     },
     {
+      "name": "star-animation",
+      "type": "registry:block",
+      "title": "Star Animation",
+      "description": "ASCII animation of a star.",
+      "files": [
+        {
+          "path": "src/components/ascii/star.tsx",
+          "type": "registry:component",
+          "target": "components/ascii/star.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rainbow-fire",
+      "type": "registry:block",
+      "title": "Rainbow Fire",
+      "description": "ASCII rainbow fire animation.",
+      "files": [
+        {
+          "path": "src/components/ascii/rainbow-fire.tsx",
+          "type": "registry:component",
+          "target": "components/ascii/rainbow-fire.tsx"
+        }
+      ]
+    },
+    {
       "name": "pitstop",
       "type": "registry:block",
       "title": "Pit Stop",
