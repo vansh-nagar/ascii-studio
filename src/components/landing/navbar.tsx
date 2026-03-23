@@ -13,11 +13,11 @@ export default function Navbar() {
   useEffect(() => {
     let previousScrollPos = window.scrollY;
     let ticking = false;
-    
+
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       const scrollDiff = Math.abs(currentScrollPos - previousScrollPos);
-      
+
       // Only update if we've scrolled a decent amount (threshold of 5px) or are at the top
       if (currentScrollPos < 50) {
         setVisible(true);
@@ -50,35 +50,38 @@ export default function Navbar() {
         visible ? "translate-y-0 opacity-100" : "-translate-y-32 opacity-0"
       }`}
     >
-        {/* Logo left */}
-        <div className="flex items-center gap-2">
-          <Link
-            href="/"
-            className="flex items-center gap-2 transition-all duration-300 hover:opacity-80"
-          >
-            <img
-              src="/logo/logo.png"
-              alt="Logo"
-              className="object-cover h-10 aspect-square rounded-full"
-            />
-            <span className="text-xl truncate font-medium tracking-tight">
-              Ascii Studio
-            </span>
-          </Link>
-        </div>
+      {/* Logo left */}
+      <div className="flex items-center gap-2">
+        <Link
+          href="/"
+          className="flex items-center gap-2 transition-all duration-300 hover:opacity-80"
+        >
+          <img
+            src="/logo/logo.png"
+            alt="Logo"
+            className="object-cover h-10 aspect-square rounded-full"
+          />
+          <span className="text-xl truncate font-medium tracking-tight">
+            Ascii Studio
+          </span>
+        </Link>
+      </div>
 
-        {/* Social buttons right */}
-        <nav className="flex items-center gap-2 justify-end">
-          <Link
-            target="_blank"
-            href={"https://github.com/vansh-nagar/ASCII-Studio"}
+      {/* Social buttons right */}
+      <nav className="flex items-center gap-2 justify-end">
+        <Link
+          target="_blank"
+          href={"https://github.com/vansh-nagar/ASCII-Studio"}
+        >
+          <Button
+            variant="outline"
+            className="text-xs border-red-500 dark:border-red-500"
           >
-            <Button variant="outline" className="text-xs border-red-500 dark:border-red-500">
-              <Github className="w-6 h-6 " /> <StarsCount />
-              /500{" "}
-            </Button>
-          </Link>
-          <Link target="_blank" href={"https://x.com/vansh1029"}>
+            <Github className="w-6 h-6 " /> <StarsCount />
+            /500{" "}
+          </Button>
+        </Link>
+        {/* <Link target="_blank" href={"https://x.com/vansh1029"}>
             <Button variant="outline" size="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,9 +97,9 @@ export default function Navbar() {
                 <path d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516" />
               </svg>
             </Button>
-          </Link>
-          <ModeToggle />
-        </nav>
+          </Link> */}
+        <ModeToggle />
+      </nav>
     </header>
   );
 }
