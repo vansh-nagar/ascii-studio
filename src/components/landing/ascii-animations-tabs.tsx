@@ -8,6 +8,8 @@ import RedFire from "../ascii/red-fire";
 import Star from "../ascii/star";
 import CopyDropdown from "./copy-drop-down";
 import { useSearch } from "./search-context";
+import Lightning from "../ascii/lightning";
+import Skull from "../ascii/skull";
 
 type AnimationCard = {
   name: string;
@@ -25,6 +27,20 @@ type SpecialEffectItem = AnimationCard & {
 };
 
 const asciiAnimations: AnimationItem[] = [
+  {
+    name: "Lightning",
+    description: "ASCII animation of a Formula 1 pitstop with cars and crew.",
+    render: () => <Lightning />,
+    registryName: "lightning",
+    landscape: false,
+  },
+  {
+    name: "Skull",
+    description: "ASCII animation of a skull.",
+    render: () => <Skull />,
+    registryName: "skull",
+    landscape: false,
+  },
   {
     name: "Pitstop",
     description: "ASCII animation of a Formula 1 pitstop with cars and crew.",
