@@ -1,7 +1,6 @@
+import { type ReactNode, useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import Ascii2Balls from "../ascii/2-balls";
 import Cd from "../ascii/cd";
-import Dust from "../ascii/Dust";
 import HandFire from "../ascii/hand-fire";
 import Pitstop from "../ascii/pitstop";
 import RainbowFire from "../ascii/rainbow-fire";
@@ -10,59 +9,75 @@ import Star from "../ascii/star";
 import CopyDropdown from "./copy-drop-down";
 import { useSearch } from "./search-context";
 
-const asciiAnimations = [
+type AnimationCard = {
+  name: string;
+  description: string;
+  registryName: string;
+  landscape: boolean;
+};
+
+type AnimationItem = AnimationCard & {
+  render: () => ReactNode;
+};
+
+type SpecialEffectItem = AnimationCard & {
+  render: (isPlaying: boolean) => ReactNode;
+};
+
+const asciiAnimations: AnimationItem[] = [
   {
     name: "Pitstop",
     description: "ASCII animation of a Formula 1 pitstop with cars and crew.",
-    component: <Pitstop />,
+    render: () => <Pitstop />,
     registryName: "pitstop",
     landscape: true,
   },
   {
     name: "Red Fire",
     description: "ASCII flame animation in a red terminal style.",
-    component: <RedFire />,
+    render: () => <RedFire />,
     registryName: "red-fire",
     landscape: false,
   },
   {
     name: "CD Animation",
     description: "ASCII animation of a CD spinning.",
-    component: <Cd />,
+    render: () => <Cd />,
     registryName: "cd",
     landscape: false,
   },
 ];
 
-const specialEffects = [
+const specialEffects: SpecialEffectItem[] = [
   {
     name: "Star",
     description: "ASCII animation of a star.",
-    component: <Star />,
+    render: (isPlaying) => <Star isPlaying={isPlaying} />,
     registryName: "star-animation",
     landscape: false,
   },
   {
     name: "Rainbow Fire",
     description: "ASCII rainbow fire animation.",
-    component: <RainbowFire />,
+    render: (isPlaying) => <RainbowFire isPlaying={isPlaying} />,
     registryName: "rainbow-fire",
     landscape: false,
   },
   {
     name: "Hand Fire",
     description: "ASCII animation of a hand holding fire/flame.",
-    component: <HandFire />,
+    render: (isPlaying) => <HandFire isPlaying={isPlaying} />,
     registryName: "hand-fire",
     landscape: true,
   },
 ];
 
 export default function AsciiAnimationsTabs() {
+  const [hoveredSpecial, setHoveredSpecial] = useState<string | null>(null);
   const { query } = useSearch();
   const normalizedQuery = query.trim().toLowerCase();
 
-  const filterList = (list: typeof asciiAnimations) =>
+  const filterList = <T extends AnimationCard>(list: T[]) =>
     list.filter((item) => {
       if (!normalizedQuery) return true;
       return (
@@ -89,7 +104,7 @@ export default function AsciiAnimationsTabs() {
             value="special"
             className="z-50 cursor-pointer group text-xs rounded-full"
           >
-            Special Text Effects (Laggy)
+            Special Ascci (hover to play)
           </TabsTrigger>
         </TabsList>{" "}
       </div>
@@ -106,7 +121,7 @@ export default function AsciiAnimationsTabs() {
               key={index}
               className={`relative border rounded-3xl aspect-square flex items-center justify-center overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${item.landscape ? "sm:col-span-2" : ""}`}
             >
-              <div className="z-30">{item.component}</div>
+              <div className="z-30">{item.render()}</div>
               <div className="leading-1 absolute left-4 bottom-4">
                 <p className="text-xs font-medium">{item.name}</p>
                 <p className="text-xs text-muted-foreground">
@@ -131,8 +146,16 @@ export default function AsciiAnimationsTabs() {
             <div
               key={index}
               className={`relative border rounded-3xl aspect-square flex items-center justify-center overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${item.landscape ? "sm:col-span-2" : ""}`}
+              onMouseEnter={() => setHoveredSpecial(item.registryName)}
+              onMouseLeave={() =>
+                setHoveredSpecial((current) =>
+                  current === item.registryName ? null : current,
+                )
+              }
             >
-              <div className="z-30">{item.component}</div>
+              <div className="z-30">
+                {item.render(hoveredSpecial === item.registryName)}
+              </div>
               <div className="leading-1 absolute left-4 bottom-4">
                 <p className="text-xs font-medium">{item.name}</p>
                 <p className="text-xs text-muted-foreground">

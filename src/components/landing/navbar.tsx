@@ -97,7 +97,7 @@ export default function Navbar() {
             /500
           </Button>
         </Link>
-        <div className="relative flex items-center">
+        <div className="relative flex items-center max-sm:hidden  ">
           {!searchOpen ? (
             <Button
               variant="outline"

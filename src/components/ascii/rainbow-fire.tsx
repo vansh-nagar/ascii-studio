@@ -68,13 +68,21 @@ const APPEARANCE = {
 };
 const CHARS = " .:░▒▓█";
 
-export default function RainbowFire() {
+type SpecialAsciiEffectProps = {
+  isPlaying?: boolean;
+};
+
+export default function RainbowFire({
+  isPlaying = false,
+}: SpecialAsciiEffectProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [scale, setScale] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLPreElement>(null);
 
   useEffect(() => {
+    if (!isPlaying) return;
+
     let animationId: number;
     let lastTime = 0;
     const frameDuration = 1000 / FPS;
@@ -93,7 +101,7 @@ export default function RainbowFire() {
 
     animationId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationId);
-  }, []);
+  }, [isPlaying]);
 
   useEffect(() => {
     const measure = () => {
@@ -123,6 +131,7 @@ export default function RainbowFire() {
 
   const effect = APPEARANCE.textEffect;
   const needsStyles = effect !== "none";
+  const animationPlayState = isPlaying ? "running" : "paused";
 
   return (
     <div
@@ -190,6 +199,7 @@ export default function RainbowFire() {
               return (
                 <span
                   className={effect === "none" ? "" : `ascii-effect-${effect}`}
+                  style={effect === "none" ? undefined : { animationPlayState }}
                 >
                   {text}
                 </span>
@@ -203,18 +213,23 @@ export default function RainbowFire() {
             const effectStyle =
               effect === "matrix"
                 ? {
+                    animationPlayState,
                     color: "#00ff00",
                     textShadow: "0 0 10px #00ff00, 0 0 20px #00ff00",
                   }
                 : effect === "neon"
                   ? {
+                      animationPlayState,
                       color: "#ff00ff",
                       textShadow:
                         "0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff",
                     }
-                  : effect === "glitch"
-                    ? { textShadow: "2px 0 0 red, -2px 0 0 blue" }
-                    : {};
+                : effect === "glitch"
+                  ? {
+                      animationPlayState,
+                      textShadow: "2px 0 0 red, -2px 0 0 blue",
+                    }
+                  : { animationPlayState };
 
             const result = [];
             let currentBatch = "";

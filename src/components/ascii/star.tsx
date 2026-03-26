@@ -43,7 +43,13 @@ const APPEARANCE = {
   useColors: false,
 };
 
-export default function Star() {
+type SpecialAsciiEffectProps = {
+  isPlaying?: boolean;
+};
+
+export default function Star({
+  isPlaying = false,
+}: SpecialAsciiEffectProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [scale, setScale] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,6 +57,8 @@ export default function Star() {
 
   // Animation logic using requestAnimationFrame for smoothness
   useEffect(() => {
+    if (!isPlaying) return;
+
     let animationId: number;
     let lastTime = 0;
     const frameDuration = 1000 / FPS;
@@ -69,8 +77,7 @@ export default function Star() {
 
     animationId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isPlaying]);
 
   // Responsive scaling logic (similar to studio fit-to-container)
   useEffect(() => {
@@ -97,12 +104,12 @@ export default function Star() {
     const observer = new ResizeObserver(measure);
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isVideo = APPEARANCE.textEffect === "video";
   const isGradient = APPEARANCE.textEffect === "gradient";
   const isBurn = APPEARANCE.textEffect === "burn";
+  const animationPlayState = isPlaying ? "running" : "paused";
 
   return (
     <div
@@ -119,7 +126,6 @@ export default function Star() {
       }}
     >
       {(isVideo || isGradient || isBurn) && (
-        /* eslint-disable-next-line react/no-danger */
         <style
           dangerouslySetInnerHTML={{
             __html: `
@@ -170,6 +176,7 @@ export default function Star() {
                   : ""
           }
           style={{
+            animationPlayState,
             fontFamily: "inherit",
             fontSize: `${APPEARANCE.fontSize}px`,
             lineHeight: APPEARANCE.lineHeight,
