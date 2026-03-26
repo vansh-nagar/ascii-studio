@@ -60,7 +60,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-6 flex justify-between gap-2 px-4 py-3 left-1/2 -translate-x-1/2 w-[95vw] sm:w-[70vw] z-50 rounded-3xl bg-background/40 backdrop-blur-lg border transition-all duration-300 ease-in-out ${
+      className={`fixed top-6 flex z-[200] justify-between gap-2 px-4 py-3 left-1/2 -translate-x-1/2 w-[95vw] sm:w-[70vw] rounded-3xl bg-background/40 backdrop-blur-lg border transition-all duration-300 ease-in-out ${
         visible ? "translate-y-0 opacity-100" : "-translate-y-32 opacity-0"
       }`}
     >
