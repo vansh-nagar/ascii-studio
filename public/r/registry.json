@@ -96,5 +96,19 @@
           }
         ]
       }
+      ,
+      {
+        "name": "rocket-blast",
+        "type": "registry:block",
+        "title": "Rocket Blast",
+        "description": "ASCII rocket blasting off with animated flames and smoke.",
+        "files": [
+          {
+            "path": "src/components/ascii/rocket-blast.tsx",
+            "type": "registry:component",
+            "target": "components/ascii/rocket-blast.tsx"
+          }
+        ]
+      }
   ]
 }

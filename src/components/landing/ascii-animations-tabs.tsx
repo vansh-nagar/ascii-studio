@@ -11,6 +11,8 @@ import { useSearch } from "./search-context";
 import Lightning from "../ascii/lightning";
 import Skull from "../ascii/skull";
 import Balls from "../ascii/balls";
+import Fire from "../ascii/fire";
+import RocketBlast from "../ascii/rocket-blast";
 
 type AnimationCard = {
   name: string;
@@ -28,6 +30,13 @@ type SpecialEffectItem = AnimationCard & {
 };
 
 const asciiAnimations: AnimationItem[] = [
+  {
+    name: "Lightning",
+    description: "ASCII animation of a Formula 1 pitstop with cars and crew.",
+    render: () => <RocketBlast />,
+    registryName: "lightning",
+    landscape: true,
+  },
   {
     name: "Lightning",
     description: "ASCII animation of a Formula 1 pitstop with cars and crew.",
