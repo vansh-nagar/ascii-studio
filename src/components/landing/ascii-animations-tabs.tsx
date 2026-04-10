@@ -13,6 +13,7 @@ import Skull from "../ascii/skull";
 import Balls from "../ascii/balls";
 import Fire from "../ascii/fire";
 import RocketBlast from "../ascii/rocket-blast";
+import SeaLines from "../ascii/sea-lines";
 
 type AnimationCard = {
   name: string;
@@ -31,11 +32,18 @@ type SpecialEffectItem = AnimationCard & {
 
 const asciiAnimations: AnimationItem[] = [
   {
-    name: "Lightning",
+    name: "Sea Lines",
     description: "ASCII animation of a Formula 1 pitstop with cars and crew.",
+    render: () => <SeaLines />,
+    registryName: "sea-lines",
+    landscape: false,
+  },
+  {
+    name: "Rocket Blast",
+    description: "ASCII rocket blasting off with animated flames and smoke.",
     render: () => <RocketBlast />,
-    registryName: "lightning",
-    landscape: true,
+    registryName: "rocket-blast-2",
+    landscape: false,
   },
   {
     name: "Lightning",

@@ -110,5 +110,32 @@
           }
         ]
       }
+      ,
+      {
+        "name": "rocket-blast-2",
+        "type": "registry:block",
+        "title": "Rocket Blast 2",
+        "description": "ASCII rocket blasting off with animated flames and smoke (variant 2).",
+        "files": [
+          {
+            "path": "src/components/ascii/rocket-blast.tsx",
+            "type": "registry:component",
+            "target": "components/ascii/rocket-blast.tsx"
+          }
+        ]
+      },
+      {
+        "name": "sea-lines",
+        "type": "registry:block",
+        "title": "Sea Lines",
+        "description": "ASCII animation of a Formula 1 pitstop with cars and crew.",
+        "files": [
+          {
+            "path": "src/components/ascii/sea-lines.tsx",
+            "type": "registry:component",
+            "target": "components/ascii/sea-lines.tsx"
+          }
+        ]
+      }
   ]
 }
