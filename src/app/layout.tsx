@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/landing/navbar";
 import { SearchProvider } from "@/components/landing/search-context";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "ascii studio",
@@ -57,6 +58,7 @@ export default function RootLayout({
             {children}
           </SearchProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
