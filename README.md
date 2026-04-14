@@ -24,6 +24,8 @@ Customize density, contrast, and character sets to generate unique outputs, all 
 
 ## Preview
 
+<img width="1853" height="967" alt="image" src="https://github.com/user-attachments/assets/1f2b3c3e-c98c-49e1-9347-c0a64d070608" />
+
 https://github.com/user-attachments/assets/1537e97a-ff49-42f6-8d42-dd3fcdaa280f
 
 ---
