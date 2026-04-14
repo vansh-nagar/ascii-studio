@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/landing/navbar";
 import { SearchProvider } from "@/components/landing/search-context";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
@@ -56,16 +55,18 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?font=satoshi@300,400,500,700&font=cabinet-grotesk@400,500,700&display=swap"
         />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="dark">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <SearchProvider>{children}</SearchProvider>
+          <SearchProvider>
+            {children}
+            <Analytics />
+          </SearchProvider>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );
