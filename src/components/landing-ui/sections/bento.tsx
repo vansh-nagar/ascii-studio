@@ -140,7 +140,7 @@ const Bento = () => {
             <div
               className="pointer-events-none opacity-20 z-0 absolute inset-0 bg-repeat"
               style={{
-                backgroundImage: "url('/bento-pattern.png')",
+                backgroundImage: "url('/textures/bento-pattern.png')",
                 backgroundSize: "40px auto",
               }}
               aria-hidden="true"
