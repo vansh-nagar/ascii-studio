@@ -120,19 +120,28 @@ const Navbar = () => {
         {/* Desktop buttons */}
         <section className="hidden lg:flex gap-2">
           <div className="relative group/star flex items-center justify-center">
-            <Button className="z-10 relative" variant="landing" size="landing">
-              Star On GitHub
-            </Button>
+            <Link
+              href="https://github.com/vansh-nagar/ascii-studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="z-10 relative"
+            >
+              <Button variant="landing" size="landing">
+                Star On GitHub
+              </Button>
+            </Link>
             {starSvg}
           </div>
-          <Button
-            className="group relative overflow-hidden transition-[padding] duration-200 hover:pr-10"
-            variant="landingBlue"
-            size="landing"
-          >
-            Launch Studio
-            <ChevronRight className="w-4 absolute right-4 -translate-x-5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200" />
-          </Button>
+          <Link href="https://tool.asciistudio.space/studio">
+            <Button
+              className="group relative overflow-hidden transition-[padding] duration-200 hover:pr-10"
+              variant="landingBlue"
+              size="landing"
+            >
+              Launch Studio
+              <ChevronRight className="w-4 absolute right-4 -translate-x-5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200" />
+            </Button>
+          </Link>
         </section>
 
         {/* Mobile hamburger */}
@@ -179,23 +188,32 @@ const Navbar = () => {
           </Link>
           <div className="flex gap-2 pt-2 border-t border-border mt-1">
             <div className="relative group/star flex-1 flex items-center justify-center">
-              <Button
+              <Link
+                href="https://github.com/vansh-nagar/ascii-studio"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="z-10 relative w-full"
-                variant="landing"
-                size="landing"
               >
-                Star On GitHub
-              </Button>
+                <Button
+                  className="w-full"
+                  variant="landing"
+                  size="landing"
+                >
+                  Star On GitHub
+                </Button>
+              </Link>
               {starSvg}
             </div>
-            <Button
-              className="flex-1 group relative overflow-hidden transition-[padding] duration-200 hover:pr-10"
-              variant="landingBlue"
-              size="landing"
-            >
-              Launch Studio
-              <ChevronRight className="w-4 absolute right-4 -translate-x-5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200" />
-            </Button>
+            <Link href="https://tool.asciistudio.space/studio" className="flex-1">
+              <Button
+                className="w-full group relative overflow-hidden transition-[padding] duration-200 hover:pr-10"
+                variant="landingBlue"
+                size="landing"
+              >
+                Launch Studio
+                <ChevronRight className="w-4 absolute right-4 -translate-x-5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200" />
+              </Button>
+            </Link>
           </div>
         </div>
       )}

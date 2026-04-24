@@ -38,13 +38,19 @@ const Footer = () => {
               </Button>
             </Link>
             <div className="relative group/star flex items-center justify-center">
-              <Button
+              <Link
+                href="https://github.com/vansh-nagar/ascii-studio"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="z-10 relative"
-                variant="landing"
-                size="landing"
               >
-                Star On GitHub
-              </Button>
+                <Button
+                  variant="landing"
+                  size="landing"
+                >
+                  Star On GitHub
+                </Button>
+              </Link>
 
               <svg
                 className="absolute top-0 right-0  z-0 opacity-0 group-hover/star:opacity-100 group-hover/star:-translate-y-8 rotate-12 transition-all duration-300"

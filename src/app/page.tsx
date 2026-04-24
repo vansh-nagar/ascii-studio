@@ -5,7 +5,6 @@ import Footer from "@/components/landing-ui/sections/footer";
 import HeroSection from "@/components/landing-ui/sections/herosection";
 import Pricing from "@/components/landing-ui/sections/pricing";
 import Testimonials from "@/components/landing-ui/sections/testimonials";
-import AsciiAnimationsGrid from "@/components/landing/grid";
 
 const Page = () => {
   return (

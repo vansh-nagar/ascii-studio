@@ -18,11 +18,12 @@ const HeroSection = () => {
   const [isFramesHovered, setIsFramesHovered] = React.useState(false);
 
   React.useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setStarsCount(1000);
-    }, 120);
-
-    return () => window.clearTimeout(timer);
+    fetch("https://api.github.com/repos/vansh-nagar/ascii-studio")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stargazers_count) setStarsCount(data.stargazers_count);
+      })
+      .catch(() => {});
   }, []);
 
   const fastSpring = {
@@ -54,8 +55,10 @@ const HeroSection = () => {
             transition={{ layout: { duration: 0.35, ease: "easeOut" } }}
             className="border border-white p-0.5 rounded-full inline-flex justify-center items-center bg-[radial-gradient(circle_at_center,_rgba(121,164,255,0.35)_0%,_rgba(121,164,255,0.1)_50%,_rgba(121,164,255,0)_80%)]"
           >
-            <button
-              type="button"
+            <Link
+              href="https://github.com/vansh-nagar/ascii-studio"
+              target="_blank"
+              rel="noopener noreferrer"
               className=" px-4 flex py-1.5  text-[10px] text-white"
               style={{
                 background:
@@ -66,7 +69,8 @@ const HeroSection = () => {
                 borderRadius: "100px",
               }}
             >
-              <NumberFlow value={starsCount} />+ Stars on github •
+              <NumberFlow value={starsCount} />
+              Stars on github •
               <div className="flex justify-center items-center gap-1 ml-1">
                 <p>Sponsored by : </p>
                 <div>
@@ -85,7 +89,7 @@ const HeroSection = () => {
                   </svg>
                 </div>
               </div>
-            </button>
+            </Link>
           </motion.div>
           <div className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl relative cursor-default">
             Turn{" "}
@@ -439,13 +443,19 @@ const HeroSection = () => {
             </Link>
 
             <div className="relative group/star flex items-center justify-center">
-              <Button
-                className="z-10 relative"
-                variant="landing"
-                size="landing"
+              <Link
+                href="https://github.com/vansh-nagar/ascii-studio"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Star On GitHub
-              </Button>
+                <Button
+                  className="z-10 relative"
+                  variant="landing"
+                  size="landing"
+                >
+                  Star On GitHub
+                </Button>
+              </Link>
 
               <svg
                 className="absolute top-0 right-0  z-0 opacity-0 group-hover/star:opacity-100 group-hover/star:-translate-y-8 rotate-12 transition-all duration-300"
