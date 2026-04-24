@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SearchProvider } from "@/components/landing/search-context";
-import { ThemeProvider } from "@/providers/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import { GeistPixelGrid } from "geist/font/pixel";
 
@@ -73,16 +72,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          disableTransitionOnChange
-        >
-          <SearchProvider>
-            {children}
-            <Analytics />
-          </SearchProvider>
-        </ThemeProvider>
+        <SearchProvider>
+          {children}
+          <Analytics />
+        </SearchProvider>
       </body>
     </html>
   );

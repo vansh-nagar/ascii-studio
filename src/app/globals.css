@@ -4,7 +4,6 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
-@variant dark (&:is(.dark *));
 @theme {
   --color-background: #f8fafc;
   --color-foreground: var(--color-slate-900);
