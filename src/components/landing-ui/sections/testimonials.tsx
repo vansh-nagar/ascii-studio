@@ -12,6 +12,7 @@ const TWEET_URLS = [
   "https://x.com/designerdaniyel/status/2036113395200762333?s=20",
   "https://x.com/TrippleOh7/status/2036868244317827084?s=20",
   "https://x.com/0xceneor/status/2037010338286362852?s=20",
+  "https://x.com/samirande_/status/2047573016733970608?s=20",
   "https://x.com/unrootdesign/status/2043836140700963168?s=20",
   "https://x.com/bedesqui/status/2036164749113586083?s=20",
   "https://x.com/AfolabiDewale/status/2043400330835079347?s=20",

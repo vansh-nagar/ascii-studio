@@ -19,7 +19,7 @@ const HeroSection = () => {
 
   React.useEffect(() => {
     const timer = window.setTimeout(() => {
-      setStarsCount(800);
+      setStarsCount(1000);
     }, 120);
 
     return () => window.clearTimeout(timer);
