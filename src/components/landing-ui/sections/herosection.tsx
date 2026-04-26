@@ -69,7 +69,9 @@ const HeroSection = () => {
                 borderRadius: "100px",
               }}
             >
-              <NumberFlow value={starsCount} />
+              <span className="mr-1">
+                <NumberFlow value={starsCount} />
+              </span>
               Stars on github •
               <div className="flex justify-center items-center gap-1 ml-1">
                 <p>Sponsored by : </p>

@@ -229,9 +229,6 @@ const Pricing = () => {
                     <span className=" font-medium text-2xl">
                       {activeTab === "monthly" ? "Pay Monthly" : "Pay Yearly"}
                     </span>{" "}
-                    <span className="text-xs border-2 border-primary py-0.5 mt-0.5 px-1.5 rounded-lg">
-                      {activeTab === "monthly" ? "$0 / month" : "$96 / year"}
-                    </span>
                   </motion.div>
                   <motion.div
                     style={{ lineHeight: "120%" }}
