@@ -29,7 +29,6 @@ const Footer = () => {
           <div className="flex flex-row sm:flex-col flex-wrap items-start sm:items-end gap-2">
             <Link
               href="https://tool.asciistudio.space/studio"
-              target="_blank"
               rel="noopener noreferrer"
             >
               <Button
