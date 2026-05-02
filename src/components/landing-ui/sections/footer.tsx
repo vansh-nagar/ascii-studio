@@ -27,7 +27,11 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-row sm:flex-col flex-wrap items-start sm:items-end gap-2">
-            <Link href={"/studio"}>
+            <Link
+              href="https://tool.asciistudio.space/studio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 className="group relative overflow-hidden transition-[padding] duration-200 hover:pr-10"
                 variant="landingBlue"
@@ -44,10 +48,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="z-10 relative"
               >
-                <Button
-                  variant="landing"
-                  size="landing"
-                >
+                <Button variant="landing" size="landing">
                   Star On GitHub
                 </Button>
               </Link>
