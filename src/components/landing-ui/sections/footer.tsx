@@ -107,7 +107,7 @@ const Footer = () => {
             <img
               src="/logo/logo.png"
               alt="Logo"
-              className="object-cover  h-8 w-8 sm:h-12 lg:w-12 aspect-square rounded-full shrink-0"
+              className="object-cover h-8 w-8 sm:h-12 sm:w-12 aspect-square rounded-full shrink-0"
               width={48}
               height={48}
             />

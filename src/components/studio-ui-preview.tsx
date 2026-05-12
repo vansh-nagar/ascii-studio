@@ -20,7 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
 import BlueFire from "./blue-fire";
 
 export default function StudioUiPreview() {
@@ -263,7 +262,7 @@ export default function StudioUiPreview() {
                     00:12.4 / 00:34.8
                   </span>
                 </div>
-                <Slider defaultValue={[12.4]} max={34.8} min={0} step={0.1} />
+                <DummySlider value={12.4} min={0} max={34.8} />
               </div>
 
               <div className="grid grid-cols-3 border-t">
@@ -321,7 +320,36 @@ function SliderField({
           {value}
         </span>
       </div>
-      <Slider defaultValue={[value]} max={max} min={min} step={step} />
+      <DummySlider value={value} min={min} max={max} />
+    </div>
+  );
+}
+
+function DummySlider({
+  value,
+  min,
+  max,
+}: {
+  value: number;
+  min: number;
+  max: number;
+}) {
+  const percent = Math.max(
+    0,
+    Math.min(100, ((value - min) / (max - min)) * 100),
+  );
+  return (
+    <div className="relative flex h-4 w-full items-center">
+      <div className="relative h-1 w-full rounded-full bg-muted">
+        <div
+          className="absolute left-0 top-0 h-full rounded-full bg-primary"
+          style={{ width: `${percent}%` }}
+        />
+        <div
+          className="absolute top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-ring bg-white shadow-sm"
+          style={{ left: `${percent}%` }}
+        />
+      </div>
     </div>
   );
 }

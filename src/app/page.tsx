@@ -4,6 +4,7 @@ import Faq from "@/components/landing-ui/sections/faq";
 import Footer from "@/components/landing-ui/sections/footer";
 import HeroSection from "@/components/landing-ui/sections/herosection";
 import Pricing from "@/components/landing-ui/sections/pricing";
+import Sponsors from "@/components/landing-ui/sections/sponsors";
 import Testimonials from "@/components/landing-ui/sections/testimonials";
 
 const Page = () => {
@@ -15,6 +16,7 @@ const Page = () => {
           <div className="w-full relative">
             <HeroSection />
           </div>
+          <Sponsors />
           <Bento />
           <Testimonials />
           <Pricing />

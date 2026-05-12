@@ -3,6 +3,7 @@ import "./globals.css";
 import { SearchProvider } from "@/components/landing/search-context";
 import { Analytics } from "@vercel/analytics/next";
 import { GeistPixelGrid } from "geist/font/pixel";
+import { Agentation } from "agentation";
 
 const geistPixelGrid = GeistPixelGrid;
 
@@ -75,6 +76,7 @@ export default function RootLayout({
         <SearchProvider>
           {children}
           <Analytics />
+          {process.env.NODE_ENV === "development" && <Agentation />}
         </SearchProvider>
       </body>
     </html>
