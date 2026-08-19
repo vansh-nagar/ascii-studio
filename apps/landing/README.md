@@ -30,10 +30,10 @@ https://github.com/user-attachments/assets/1537e97a-ff49-42f6-8d42-dd3fcdaa280f
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=vansh-nagar%2Fascii-studio&type=date&legend=top-left">
+<a href="https://star-history.dera.page/#vansh-nagar/ascii-studio&type=date&legend=top-left">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=vansh-nagar/ascii-studio&type=date&theme=dark&legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=vansh-nagar/ascii-studio&type=date&legend=top-left" />
-    <img alt="Star History Chart" src="https://api.star-history.com/image?repos=vansh-nagar/ascii-studio&type=date&legend=top-left" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=vansh-nagar/ascii-studio&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=vansh-nagar/ascii-studio&type=date&legend=top-left" />
+    <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=vansh-nagar/ascii-studio&type=date&legend=top-left" />
   </picture>
 </a>
