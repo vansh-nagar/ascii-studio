@@ -4,15 +4,9 @@
 import net from "node:net";
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
+import { parseDevArgs, findAvailablePort } from "./dev-options.mjs";
 
-const argv = process.argv.slice(2);
-const baseIdx = argv.indexOf("--base");
-const base =
-  baseIdx !== -1 ? Number.parseInt(argv[baseIdx + 1], 10) || 3000 : 3000;
-// everything except `--base <n>` is forwarded to `next dev`
-const passThrough = argv.filter(
-  (_, i) => i !== baseIdx && i !== baseIdx + 1,
-);
+const { base, passThrough } = parseDevArgs(process.argv.slice(2));
 
 const isFree = (port) =>
   new Promise((resolve) => {
@@ -22,9 +16,7 @@ const isFree = (port) =>
     srv.listen(port, "0.0.0.0");
   });
 
-let port = base;
-const maxPort = base + 100;
-while (port < maxPort && !(await isFree(port))) port++;
+const port = await findAvailablePort(base, isFree);
 
 if (port !== base) {
   console.log(`\n⚠ port ${base} busy — using free port ${port} instead`);
@@ -38,10 +30,16 @@ const nextBin = require.resolve("next/dist/bin/next");
 const child = spawn(
   process.execPath,
   [nextBin, "dev", "-p", String(port), ...passThrough],
-  { stdio: "inherit", env: process.env },
+  {
+    stdio: "inherit",
+    env: { ...process.env, WATCHPACK_POLLING: process.env.WATCHPACK_POLLING ?? "true" },
+  },
 );
 
-const forward = (sig) => child.kill(sig);
-process.on("SIGINT", forward);
-process.on("SIGTERM", forward);
-child.on("exit", (code) => process.exit(code ?? 0));
+process.on("SIGINT", () => child.kill("SIGINT"));
+process.on("SIGTERM", () => child.kill("SIGTERM"));
+child.on("error", (error) => {
+  console.error(`Failed to start Next.js: ${error.message}`);
+  process.exit(1);
+});
+child.on("exit", (code, signal) => process.exit(code ?? (signal === "SIGINT" ? 130 : 143)));
