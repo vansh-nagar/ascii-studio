@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "WATCHPACK_POLLING=true node ../../scripts/dev.mjs --base 3000 --webpack",
+    "dev": "node ../../scripts/dev.mjs --base 3000 --webpack",
     "dev:turbo": "next dev",
     "build": "next build",
     "start": "next start",

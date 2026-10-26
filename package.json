@@ -11,7 +11,8 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "turbo run start",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "test": "node --test scripts/dev.test.mjs"
   },
   "devDependencies": {
     "turbo": "^2"
